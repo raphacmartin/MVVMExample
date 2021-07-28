@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="MVVMExample" customModuleProvider="target">
             <connections>
+                <outlet property="errorMessageLabel" destination="vNc-hB-hYe" id="YPB-PF-dEi"/>
                 <outlet property="passwordField" destination="R09-8f-kUO" id="QaP-AZ-FsS"/>
                 <outlet property="usernameField" destination="Koo-Q5-4Xj" id="xbt-jx-1oN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,7 +24,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ECK-BX-Ykp">
                     <rect key="frame" x="12" y="362.5" width="390" height="171"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psb-uW-T2N">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psb-uW-T2N" userLabel="Username - Label">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -33,8 +34,11 @@
                             <rect key="frame" x="0.0" y="28.5" width="390" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="RFT-1y-2Xf"/>
+                            </connections>
                         </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BqK-uq-BXn" userLabel="Password">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BqK-uq-BXn" userLabel="Password - Label">
                             <rect key="frame" x="0.0" y="70.5" width="390" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -43,12 +47,24 @@
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R09-8f-kUO" userLabel="Password - TextField">
                             <rect key="frame" x="0.0" y="99" width="390" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="oaQ-ZH-FzG"/>
+                            </connections>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svX-Ro-Uy9">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svX-Ro-Uy9" userLabel="Sign In - Button">
                             <rect key="frame" x="0.0" y="141" width="390" height="30"/>
                             <state key="normal" title="Sign In"/>
+                            <connections>
+                                <action selector="signIn:" destination="-1" eventType="touchUpInside" id="Gc4-Zj-yZg"/>
+                            </connections>
                         </button>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNc-hB-hYe" userLabel="Error Message - Label">
+                            <rect key="frame" x="0.0" y="171" width="390" height="0.0"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <color key="textColor" systemColor="systemRedColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                 </stackView>
             </subviews>
@@ -65,6 +81,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

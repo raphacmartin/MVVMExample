@@ -9,6 +9,8 @@ import Foundation
 
 class LoginService {
     class func login(username: String, password: String, _ completion: (_ success: Bool) -> Void) {
-        // TODO: Implementar login
+        let correct_username = "admin"
+        let correct_password = "123456"
+        completion(username == correct_username && password == correct_password)
     }
 }
