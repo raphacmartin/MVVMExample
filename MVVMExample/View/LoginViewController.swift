@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
+    @IBOutlet weak var codeLabel: UILabel!
     
     // MARK: Private properties
     private var viewModel = UserViewModel()
@@ -21,6 +22,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Login"
+        
+        viewModel.accessCode.bind { [unowned self] in
+            self.codeLabel.text = $0
+        }
     }
     
     // MARK: Controller Functions
@@ -60,7 +65,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == usernameField {
-            textField.text = viewModel.username
+            textField.text = viewModel.username.value
         }
     }
     

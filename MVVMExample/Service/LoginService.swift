@@ -13,4 +13,8 @@ class LoginService {
         let correct_password = "123456"
         completion(username == correct_username && password == correct_password)
     }
+    
+    class func generateAccessCode() -> String {
+        return randomString(length: 8)
+    }
 }

@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="MVVMExample" customModuleProvider="target">
             <connections>
+                <outlet property="codeLabel" destination="P5k-fh-hpl" id="P6r-JM-cFV"/>
                 <outlet property="errorMessageLabel" destination="vNc-hB-hYe" id="YPB-PF-dEi"/>
                 <outlet property="passwordField" destination="R09-8f-kUO" id="QaP-AZ-FsS"/>
                 <outlet property="usernameField" destination="Koo-Q5-4Xj" id="xbt-jx-1oN"/>
@@ -22,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ECK-BX-Ykp">
-                    <rect key="frame" x="12" y="362.5" width="390" height="171"/>
+                    <rect key="frame" x="12" y="310" width="390" height="276"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psb-uW-T2N" userLabel="Username - Label">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="20.5"/>
@@ -60,11 +61,46 @@
                             </connections>
                         </button>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNc-hB-hYe" userLabel="Error Message - Label">
-                            <rect key="frame" x="0.0" y="171" width="390" height="0.0"/>
+                            <rect key="frame" x="0.0" y="175" width="390" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                             <color key="textColor" systemColor="systemRedColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqN-BK-Wq4">
+                            <rect key="frame" x="0.0" y="179" width="390" height="97"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iFi-TQ-j9a">
+                                    <rect key="frame" x="0.0" y="24" width="390" height="49"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD2-MQ-qex" userLabel="Access Code - Label">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="20.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20.5" id="6rW-wE-WYP"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5k-fh-hpl" userLabel="Access Code - Value">
+                                            <rect key="frame" x="0.0" y="28.5" width="390" height="20.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20.5" id="Vky-YR-6vL"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="iFi-TQ-j9a" firstAttribute="leading" secondItem="hqN-BK-Wq4" secondAttribute="leading" id="CqY-m6-UdT"/>
+                                <constraint firstAttribute="trailing" secondItem="iFi-TQ-j9a" secondAttribute="trailing" id="Kkv-Go-08U"/>
+                                <constraint firstAttribute="bottom" secondItem="iFi-TQ-j9a" secondAttribute="bottom" constant="24" id="Ter-An-8m6"/>
+                                <constraint firstItem="iFi-TQ-j9a" firstAttribute="top" secondItem="hqN-BK-Wq4" secondAttribute="top" constant="24" id="ss5-2D-Uba"/>
+                            </constraints>
+                        </view>
                     </subviews>
                 </stackView>
             </subviews>

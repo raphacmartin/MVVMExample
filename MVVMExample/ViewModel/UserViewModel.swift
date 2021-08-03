@@ -15,21 +15,24 @@ enum UserValidationState {
 class UserViewModel {
     private let minUsernameLength = 4
     private let minPasswordLength = 5
-    private var user = User()
+    private let codeRefreshTime = 5.0
     
-    var username: String {
-        return user.username
+    private var user = User() {
+        didSet {
+            self.username.value = user.username
+            self.password.value = user.password
+        }
     }
     
-    var password: String {
-        return user.password
-    }
+    var username: Box<String> = Box("")
+    
+    var password: Box<String> = Box("")
     
     var protectedUsername: String {
-        if username.count >= minUsernameLength {
+        if username.value.count >= minUsernameLength {
             var displayName = [Character]()
-            for (index, character) in username.enumerated() {
-                if index > username.count - minUsernameLength {
+            for (index, character) in username.value.enumerated() {
+                if index > username.value.count - minUsernameLength {
                     displayName.append(character)
                 } else {
                     displayName.append("*")
@@ -39,7 +42,14 @@ class UserViewModel {
             return String(displayName)
         }
         
-        return username
+        return username.value
+    }
+    
+    var accessCode: Box<String?> = Box(nil)
+    
+    init(user: User = User()) {
+        self.user = user
+        startAccessCodeTimer()
     }
 }
 
@@ -75,6 +85,16 @@ extension UserViewModel {
             } else {
                 completion("Invalid credentials")
             }
+        }
+    }
+}
+
+private extension UserViewModel {
+    func startAccessCodeTimer() {
+        accessCode.value = LoginService.generateAccessCode()
+        
+        dispatch(after: 5.0) {
+            self.startAccessCodeTimer()
         }
     }
 }
